@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ujaccommodationAPI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-color: #f1f1f1;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  position: fixed;
+  height: 50%;
+  overflow: auto;
+    background-color: white;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+ 
+}
+
+@media screen and (max-width: 700px) {
+ .sidebar a {
+    text-align: center;
+    float: none;
+}
+
+
+}
+</style>
+
+<body>
+
+
+<nav class="navbar navbar-dark bg-dark " style="height: 90px;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html" >UJAccommodations API</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">UJAccommodations API</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="contribute.html">Contributing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/GlenReiseMalesa/UJ-Accommodation-API">
+
+       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+            </a>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-xxl bg-secondary bg-opacity-75 pt-5 " style="height:35vh;">
+
+
+  <p class="text-center fs-4 text-light">The UJAccommodations API</p>
+  <p class="text-center fs-1 text-light">Documentation</p>
+
+
+</div>
+
+
+
+
+
+<div class="sidebar border border-secondary rounded">
+  <a class="active" href="#">V.1.1</a>
+  <a href="#accommodations" class=" fs-6"><span class="badge bg-primary">GET</span>accommodations</a>
+  <a href="#addresses" class=" fs-6"><span class="badge bg-primary">GET</span>addresses</a>
+  <a href="#contacts" class=" fs-6"><span class="badge bg-primary">GET</span>contacts</a>
+  <a href="#propertyname" class=" fs-6"><span class="badge bg-primary">GET</span>property name</a>
+  <a href="#location" class=" fs-6"><span class="badge bg-primary">GET</span>location</a>
+  <a href="#key" class=" fs-6"><span class="badge bg-primary">GET</span>key</a>
+</div>
+
+<div class="content pl-4 mt-4" id="accommodations">
+  <h2><span class="badge bg-primary">GET</span>accommodations</h2>
+  <div style="margin-left: 30px;width: 700px;">
+    <h6>sample query:</h6>
+    <pre id="accommodationsQuery" class="bg-white" style="padding:10px;"></pre>
+    <h6>response : </h6>
+    <pre id="accommodationsJson" class="bg-white"></pre>
+  </div>
+</div>
+
+<div class="content pl-4 mt-4" id="addresses">
+  <h2><span class="badge bg-primary">GET</span>addresses</h2>
+  <div style="margin-left: 30px;width: 700px;">
+    <h6>sample query:</h6>
+    <pre id="addressesQuery" class="bg-white" style="padding:10px;"></pre>
+    <h6>response : </h6>
+    <pre id="addressesJson" class="bg-white"></pre>
+  </div>
+</div>
+
+<div class="content pl-4 mt-4" id="contacts">
+  <h2><span class="badge bg-primary">GET</span>contacts</h2>
+  <div style="margin-left: 30px;width: 700px;">
+    <h6>sample query:</h6>
+    <pre id="contactsQuery" class="bg-white" style="padding:10px;"></pre>
+    <h6>response : </h6>
+    <pre id="contactsJson" class="bg-white"></pre>
+  </div>
+</div>
+
+<div class="content pl-4 mt-4" id="propertyname">
+  <h2><span class="badge bg-primary">GET</span>property name</h2>
+  <div style="margin-left: 30px;width: 700px;">
+    <h6>sample query:</h6>
+    <pre id="propertynameQuery" class="bg-white" style="padding:10px;"></pre>
+    <h6>response : </h6>
+    <pre id="propertynameJson" class="bg-white"></pre>
+  </div>
+</div>
+
+<div class="content pl-4 mt-4" id="location">
+  <h2><span class="badge bg-primary">GET</span>location</h2>
+  <div style="margin-left: 30px;width: 700px;">
+    <h6>sample query:</h6>
+    <pre id="locationQuery" class="bg-white" style="padding:10px;"></pre>
+    <h6>response : </h6>
+    <pre id="locationJson" class="bg-white" ></pre>
+  </div>
+</div>
+
+<div class="content pl-4 mt-4" id="key">
+  <h2><span class="badge bg-primary">GET</span>key</h2>
+  <div style="margin-left: 30px;width: 700px;">
+    <h6>sample query:</h6>
+    <pre id="keyQuery" class="bg-white" style="padding:10px;"></pre>
+    <h6>response : </h6>
+    <pre id="keyJson" class="bg-white" ></pre>
+  </div>
+</div>
+
+
+
+
+
+<footer class="bg-light text-center text-lg-start">
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-dark" href="#">Glen Reise Malesa</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+  <script>
+    var data = [{"key":"1","propertyDetails":{"PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"10","Address":"17 Putney Road, Rossmore,ERF 213 Johannesburg, 2021"},"contactDetails":{"ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","ContactNumber":"0845848333"}},{"key":"2","propertyDetails":{"PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"8","Address":"107 St Swithins Avenue, Auckland Park, ERF 688 Johannesburg, 2092"},"contactDetails":{"ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","ContactNumber":"0845848333"}}];
+    document.getElementById("accommodationsJson").innerHTML = JSON.stringify(data, null, 4);
+     document.getElementById("accommodationsQuery").innerHTML = "https://ujaccommodations.000webhostapp.com/api/accommodation/accommodation.php";
+    
+
+        var data1 = [{"key":"1","PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"10","Address":"17 Putney Road, Rossmore,ERF 213 Johannesburg, 2021"},{"key":"2","PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"8","Address":"107 St Swithins Avenue, Auckland Park, ERF 688 Johannesburg, 2092"}];
+    document.getElementById("addressesJson").innerHTML = JSON.stringify(data1, null, 4);
+     document.getElementById("addressesQuery").innerHTML = "https://ujaccommodations.000webhostapp.com/api/accommodation/addresses.php";
+
+
+         var data2 = [{"key":"1","ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","ContactNumber":"0845848333"},{"key":"2","ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","ContactNumber":"0845848333"}];
+    document.getElementById("contactsJson").innerHTML = JSON.stringify(data2, null, 4);
+     document.getElementById("contactsQuery").innerHTML = "https://ujaccommodations.000webhostapp.com/api/accommodation/contacts.php";
+
+
+         var data3 = {"key":"1","ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"10","Address":"17 Putney Road, Rossmore,ERF 213 Johannesburg, 2021"};
+    document.getElementById("propertynameJson").innerHTML = JSON.stringify(data3, null, 4);
+     document.getElementById("propertynameQuery").innerHTML = "https://ujaccommodations.000webhostapp.com/api/accommodation/accommodationbypropertyname.php?PropertyName=17%20ON%20PUTNEY";
+
+
+         var data4 = {"key":"1","ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"10","Address":"17 Putney Road, Rossmore,ERF 213 Johannesburg, 2021"};
+    document.getElementById("locationJson").innerHTML = JSON.stringify(data4, null, 4);
+     document.getElementById("locationQuery").innerHTML = "https://ujaccommodations.000webhostapp.com/api/accommodation/accommodationbylocation.php?address=17%20Putney%20Road,%20Rossmore,ERF%20213%20Johannesburg,%20202";
+
+
+         var data5 = {"key":"1","ContactName":"Fatima Moosa","ContactEmail":"fatimamoosa91@gmail.com","PropertyName":"17 ON PUTNEY","Campus":"APK","CapacityApproved":"10","Address":"17 Putney Road, Rossmore,ERF 213 Johannesburg, 2021"};
+    document.getElementById("keyJson").innerHTML = JSON.stringify(data5, null, 100);
+     document.getElementById("keyQuery").innerHTML = "https://ujaccommodations.000webhostapp.com/api/accommodation/accommodationbykey.php?key=1";
+
+
+
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
